@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use App\Models\Movie;
 
-class Controller extends BaseController
+class PageController extends Controller
 {
-    use AuthorizesRequests, ValidatesRequests;
+    public function index()
+    {
+        $movies = Movie::all();
+
+        return view('movies.index', compact('movies'));
+    }
 }
